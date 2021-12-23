@@ -1,0 +1,22 @@
+<div class="container">
+  <nz-card [nzTitle]="nzTitle">
+    <div *ngIf="detailData.type=='video'">
+      <video [src]="detailData.video"></video>
+    </div>
+    <div *ngIf="detailData.type=='image'||detailData.type=='gif'">
+      <img [src]="detailData.images" alt="">
+    </div>
+    <div style="margin-top: 10px;margin-bottom: 10px">
+      <span>{{detailData.text}}</span>
+    </div>
+    <nz-card-meta [nzTitle]="detailData.top_comments_name" [nzDescription]="detailData.top_comments_content"
+      [nzAvatar]="avatarTemplate">
+    </nz-card-meta>
+  </nz-card>
+  <ng-template #avatarTemplate>
+    <nz-avatar [nzSrc]="detailData.top_comments_header"></nz-avatar>
+  </ng-template>
+  <ng-template #nzTitle>
+    <span (click)="back()"><i nz-icon [nzType]="'left'"></i>返回</span>
+  </ng-template>
+</div>

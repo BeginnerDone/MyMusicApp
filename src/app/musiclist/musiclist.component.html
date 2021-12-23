@@ -1,0 +1,24 @@
+<div class="music-list-container">
+  <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+    <input type="text" [(ngModel)]="name" nz-input placeholder="请输入歌曲关键词" />
+  </nz-input-group>
+  <ng-template #suffixIconButton>
+    <button (click)="searchMusic()" nz-button nzType="primary" nzSearch><i nz-icon type="search"></i></button>
+  </ng-template>
+  <nz-list [nzDataSource]="MusicList" [nzRenderItem]="item" [nzItemLayout]="'horizontal'" [nzLoading]="loading">
+    <ng-template #item let-item let-index="index">
+      <nz-list-item (click)="playMusic(index)">
+        <nz-card style="width:350px" [nzCover]="coverTemplate">
+          <nz-card-meta [nzTitle]="item.author" [nzAvatar]="avatarTemplate" [nzDescription]="item.title">
+          </nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+          <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+          <img alt="example" [src]="item.pic" />
+        </ng-template>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
+</div>

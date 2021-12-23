@@ -1,9 +1,3 @@
-# 说明
-
-> 其中的接口可能会失效
-
-
-
 # MyMusic
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
@@ -32,18 +26,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-news
 api:
-https://api.apiopen.top/getJoke
-type	string	否	指定查询类型，可选参数(all/video/image/gif/text)	all
-page	string	否	页码(传0或者不传会随机推荐)	1
-count	string	否	每页返回数量  10
+https://www.apiopen.top/satinGodApi?type=1&page=1
 
-详情：
-https://api.apiopen.top/getSingleJoke
-sid
-
-music:
-
-    https://api.apiopen.top/searchMusic?name=末日
-
+评论：
+https://www.apiopen.top/satinCommentApi?id=27610708&page=1

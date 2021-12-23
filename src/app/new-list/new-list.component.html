@@ -1,0 +1,41 @@
+<div>
+  <nz-tabset (nzSelectChange)="nzSelectChange($event)">
+    <nz-tab [nzTitle]="item.text" *ngFor="let item of TypeList">
+      <ng-template nz-tab>
+        <nz-list [nzDataSource]="DataList" [nzItemLayout]="'horizontal'" [nzLoading]="initLoading" [nzRenderItem]="item"
+          [nzLoadMore]="loadMore">
+          <ng-template #item let-items>
+            <nz-list-item (click)="details(items.sid)" class="list-item-center">
+              <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="initLoading">
+                <nz-card style="width: 300px" nzHoverable [nzCover]="coverTemplate">
+                  <nz-card-meta [nzTitle]="titleTemplate" [nzDescription]="items.text" [nzAvatar]="avatarTemplate">
+                  </nz-card-meta>
+                </nz-card>
+                <ng-template #avatarTemplate>
+                  <nz-avatar nzIcon="user" [nzSrc]="items.header"></nz-avatar>
+                </ng-template>
+                <ng-template #titleTemplate>
+                  <span>{{items.name}}</span> <span>{{items.passtime}}</span>
+                </ng-template>
+                <ng-template #coverTemplate>
+                  <img *ngIf="items.type=='image'||items.type=='gif'" [src]="items.images" />
+                  <img *ngIf="items.type=='video'" [src]="items.thumbnail" />
+                </ng-template>
+              </nz-skeleton>
+            </nz-list-item>
+          </ng-template>
+          <ng-template #loadMore>
+            <div class="loadmore">
+              <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">阅读更多</button>
+            </div>
+          </ng-template>
+        </nz-list>
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="musicTemplate">
+      <ng-template #musicTemplate>
+        <span (click)="goMusic()"><i nz-icon nzType="play-circle" nzTheme="outline"></i>音乐台</span>
+      </ng-template>
+    </nz-tab>
+  </nz-tabset>
+</div>
